@@ -4,7 +4,7 @@ import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
 import { performSearch } from "./js/pixaby-api";
-import { createGalleryCardTemplate } from "./js/render-function";
+import { createGalleryCard } from "./js/render-function";
 
 
 const searchForm = document.querySelector(".js-search-form");

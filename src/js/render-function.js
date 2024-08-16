@@ -3,37 +3,42 @@ import SimpleLightbox from "simplelightbox";
 // Додатковий імпорт стилів
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-export { createGalleryCardTemplate };
 
-function createGalleryCardTemplate(data, tagToInsert) {
-     tagToInsert.innerHTML = markup(data);
-}
+
 const galleryEl = document.querySelector('.js-gallery');
 console.log(galleryEl);
 
-function markup(data) {
-    return data.hits
-        .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads
-        }) =>
-            ` <li class="gallery-card">
-                <a class="gallery-link" href="${largeImageURL}">
-                <img class="gallery-img"
-                src="${webformatURL}" 
-                alt="${tags}" />
-            </li>
-            <div class="wrapper">
-                <ul class="img-content-wrapper">
-					<li>Likes<span>${likes}</span></li>
-					<li>Views<span>${views}</span></li>
-					<li>Comments<span>${comments}</span></li>
-					<li>Downloads<span>${downloads}</span></li>
-                </ul>
-            </div>`
-        ).join('');
+export const createGalleryCard = (pictureInfo) => {
+    return ` <li class="gallery-card">
+                <a class="gallery-link" href="${pictureInfo.largeImageURL}">
+                    <img class="gallery-img"
+                    src="${pictureInfo.webformatURL}" 
+                    data-source="${pictureInfo.largeImageURL}"
+                    alt="${pictureInfo.tags}"
+                    />
+                </a>
+                <div class="wrapper">
+                    <ul class="img-content-wrapper">
+					    <li>Likes<span>${pictureInfo.likes}</span></li>
+					    <li>Views<span>${pictureInfo.views}</span></li>
+					    <li>Comments<span>${pictureInfo.comments}</span></li>
+					    <li>Downloads<span>${pictureInfo.downloads}</span></li>
+                    </ul>
+                </div>
+            </li>`
 };
 
+export const renderGallery = (data) => {
+    galleryEl.innerHTML = "";
+}
 
-console.log(createGalleryCardTemplate(data.hits[0]));
+const galleryCardsTemplate = data.hits.map(createGalleryCard).join('');
+galleryEl.insertAdjacentHTML("beforeend", galleryCardsTemplate);
+    
+//  galleryEl.insertAdjacentHTML("beforeend", createGalleryCard);
 
 
+
+//  data.hits
+//         .map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads}) ).join('');=>
 
