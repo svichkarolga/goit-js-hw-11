@@ -8,17 +8,16 @@
     <link rel="stylesheet" href="./css/reset.css" />
   </head>
   <body>
-    <section>
-      <h1>Picture search</h1>
-    </section>
     <section class="gallery-section">
       <form class="input-form js-search-form">
         <label>
-          <input class="search-input js-search-input" type="text" name="user_query"></input>
+          <input class="search-input js-search-input"
+             type="text" name="user_query" placeholder="Search Images"> </input>
         </label>
         <button class="search-btn" type="submit">Search</button>
       </form>
       <ul class="gallery js-gallery"></ul>
+      <span class="loader is-hidden"></span>
     </section>
 
 
