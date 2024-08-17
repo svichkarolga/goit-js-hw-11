@@ -27,7 +27,7 @@ function onSearch(event) {
                 iziToast.error({
                     title: 'Error',
                     message: 'Sorry, there are no images matching your search query. Please try again!',
-                    position: 'topRight',
+                    position: 'bottomRight',
                 });
                 galleryEl.innerHTML = '';
             
